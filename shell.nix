@@ -18,5 +18,6 @@ let
 in
 mach-nix.mkPythonShell {  # replace with mkPythonShell if shell is wanted
   requirements = builtins.readFile ./requirements.txt;
+  # based on solution discussed at https://github.com/DavHau/mach-nix/issues/318#issuecomment-914261715
   _.gitpython.propagatedBuildInputs.mod = pySelf: self: oldVal: oldVal ++ [ pySelf.typing-extensions ];
 }
